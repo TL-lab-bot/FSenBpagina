@@ -55,6 +55,18 @@
   .pijl{position:absolute;right:10px;top:10px;width:30px;height:30px;color:#fff;display:grid;place-items:center;z-index:1}
   .pijl svg{width:18px;height:18px}
 
+
+  .viewer{position:fixed;inset:0;z-index:50;background:#fff;display:none;flex-direction:column}
+  .viewer.open{display:flex}
+  .viewer .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--donker);color:#fff;padding:10px 20px;border-bottom:4px solid var(--magenta)}
+  .viewer .titel{font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .viewer button,.viewer a.ext{font:inherit;font-weight:700;font-size:.9rem;color:#fff;background:var(--magenta);border:0;border-radius:999px;padding:9px 18px;cursor:pointer;text-decoration:none;white-space:nowrap}
+  .viewer a.ext{background:transparent;border:2px solid #fff}
+  .viewer button:hover{filter:brightness(1.08)}
+  .viewer .acties{display:flex;gap:10px;align-items:center}
+  .viewer iframe{flex:1;border:0;width:100%;background:#fff}
+  .viewer .hint{padding:8px 20px;font-size:.85rem;color:var(--grijs);background:#faf7fa;border-bottom:1px solid var(--lijn)}
+
   footer{border-top:1px solid var(--lijn);color:var(--grijs);font-size:.85rem;padding:14px 48px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
 
   @media(max-width:900px){
@@ -103,10 +115,10 @@
       <div class="nr">3</div>
       <div><h3>Duale opleiding</h3><p>Werken en studeren combineren.</p></div>
     </a>
-    <a class="tegel" style="--accent:var(--blauw)" href="https://canvas.fontys.nl/courses/36268/pages/beoordeling" target="_blank" rel="noopener">
+    <a class="tegel" style="--accent:var(--blauw)" href="https://canvas.fontys.nl/courses/36268/pages/beoordeling" target="_blank" rel="noopener" data-embed>
       <span class="pijl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       <div class="nr">4</div>
-      <div><h3>Afstudeerjaar</h3><p>Cursussen voor het afstudeertraject.</p></div>
+      <div><h3>ALO 4</h3><p>De Onderzoekende Leraar LO, toetspagina</p></div>
     </a>
   </nav>
 </main>
@@ -116,11 +128,35 @@
   <span>Voorbeeldversie</span>
 </footer>
 
+
+<div class="viewer" id="viewer" role="dialog" aria-label="Toetspagina">
+  <div class="bar">
+    <button type="button" id="terug">&lsaquo; Terug naar overzicht</button>
+    <span class="titel">ALO 4 &middot; De Onderzoekende Leraar LO</span>
+    <div class="acties"><a class="ext" id="extern" href="#" target="_blank" rel="noopener">Open in nieuw tabblad</a></div>
+  </div>
+  <div class="hint">Blijft het venster leeg of zie je een foutmelding, gebruik dan &ldquo;Open in nieuw tabblad&rdquo;. Inloggen met je Fontys-account kan nodig zijn.</div>
+  <iframe id="frame" title="Toetspagina Onderzoekende Leraar LO" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+
 <script>
   // Tijdelijk: knoppen doen nog niets. Vervang href="#" door de echte url.
   document.querySelectorAll('.tegel[href="#"]').forEach(function(a){
     a.addEventListener('click',function(e){e.preventDefault()});
   });
+
+  var viewer=document.getElementById('viewer'),frame=document.getElementById('frame'),extern=document.getElementById('extern');
+  document.querySelectorAll('.tegel[data-embed]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      if(e.ctrlKey||e.metaKey||e.shiftKey||e.button===1)return; // eigen keuze voor nieuw tabblad blijft werken
+      e.preventDefault();
+      extern.href=a.href; frame.src=a.href; viewer.classList.add('open'); document.body.style.overflow='hidden';
+      document.getElementById('terug').focus();
+    });
+  });
+  function sluit(){viewer.classList.remove('open');frame.src='about:blank';document.body.style.overflow=''}
+  document.getElementById('terug').addEventListener('click',sluit);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&viewer.classList.contains('open'))sluit()});
 </script>
 </body>
 </html>
