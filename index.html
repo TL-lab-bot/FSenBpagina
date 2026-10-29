@@ -149,6 +149,7 @@
   document.querySelectorAll('.tegel[data-embed]').forEach(function(a){
     a.addEventListener('click',function(e){
       if(e.ctrlKey||e.metaKey||e.shiftKey||e.button===1)return; // eigen keuze voor nieuw tabblad blijft werken
+      if(!window.matchMedia('(max-width:900px)').matches)return; // laptop en desktop: gewoon een nieuw tabblad
       e.preventDefault();
       extern.href=a.href; frame.src=a.href; viewer.classList.add('open'); document.body.style.overflow='hidden';
       document.getElementById('terug').focus();
