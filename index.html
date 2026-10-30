@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cursusoverzicht | Fontys Sport en Bewegen</title>
+<title>Fontys Sport en Bewegen</title>
 <style>
   :root{
     --paars:#663366;
@@ -26,7 +26,6 @@
   .logo .woord{display:none;font-weight:800;font-size:1.9rem;letter-spacing:.04em;color:var(--paars)}
   .logo.zonder img{display:none}
   .logo.zonder .woord{display:block}
-  header .tag{color:var(--grijs);font-size:.95rem;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
   .balk{height:6px;background:linear-gradient(90deg,var(--donker) 0 70%,var(--magenta) 70% 100%)}
 
   main{flex:1;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:64px;align-items:center;max-width:1280px;width:100%;margin:0 auto;padding:24px 48px 32px}
@@ -56,16 +55,6 @@
   .pijl svg{width:18px;height:18px}
 
 
-  .viewer{position:fixed;inset:0;z-index:50;background:#fff;display:none;flex-direction:column}
-  .viewer.open{display:flex}
-  .viewer .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--donker);color:#fff;padding:10px 20px;border-bottom:4px solid var(--magenta)}
-  .viewer .titel{font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .viewer button,.viewer a.ext{font:inherit;font-weight:700;font-size:.9rem;color:#fff;background:var(--magenta);border:0;border-radius:999px;padding:9px 18px;cursor:pointer;text-decoration:none;white-space:nowrap}
-  .viewer a.ext{background:transparent;border:2px solid #fff}
-  .viewer button:hover{filter:brightness(1.08)}
-  .viewer .acties{display:flex;gap:10px;align-items:center}
-  .viewer iframe{flex:1;border:0;width:100%;background:#fff}
-  .viewer .hint{padding:8px 20px;font-size:.85rem;color:var(--grijs);background:#faf7fa;border-bottom:1px solid var(--lijn)}
 
   footer{border-top:1px solid var(--lijn);color:var(--grijs);font-size:.85rem;padding:14px 48px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
 
@@ -75,8 +64,9 @@
     main{grid-template-columns:1fr;gap:28px;padding:24px 20px 40px;justify-items:center}
     .tekst{justify-self:start}
     footer{padding:14px 20px}
-    .tegel p{display:none}
-    header .tag{display:none}
+    .tegel{padding:14px 14px 14px 16px}
+    .tegel h3{font-size:.85rem}
+    .tegel p{font-size:.78rem}
     .logo img{height:52px}
   }
   @media(prefers-reduced-motion:reduce){.tegel,.tegel::after{transition:none}.tegel:hover{transform:none}}
@@ -88,76 +78,46 @@
     <img src="assets/fontys-logo.png" alt="Fontys" onerror="document.getElementById('logo').classList.add('zonder')">
     <div class="woord">FONTYS</div>
   </div>
-  <span class="tag">Sport en Bewegen &middot; ALO</span>
 </header>
 <div class="balk"></div>
 
 <main>
   <section class="tekst">
-    <span class="kicker">Cursusoverzicht</span>
+    <span class="kicker">Fontys Sport en Bewegen</span>
     <h1><span class="a">Kies je studiejaar</span><br><span class="b">en bekijk de cursus</span></h1>
     <p>Alle cursussen van de opleiding op één plek. Kies het jaar of de route waar je in zit en ga direct naar de cursuspagina.</p>
   </section>
 
   <nav class="raster" aria-label="Cursussen per studiejaar">
-    <a class="tegel" style="--accent:var(--donker)" href="#">
+    <a class="tegel" style="--accent:var(--donker)" href="https://canvas.fontys.nl/courses/37416" target="_blank" rel="noopener">
       <span class="pijl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       <div class="nr">1</div>
-      <div><h3>Eerste studiejaar</h3><p>Cursussen uit het eerste jaar.</p></div>
+      <div><h3>ALO 1 VOLTIJD</h3><p>Samen Betrokken Bewegen - praktijk</p></div>
     </a>
-    <a class="tegel" style="--accent:var(--magenta)" href="#">
+    <a class="tegel" style="--accent:var(--magenta)" href="https://canvas.fontys.nl/courses/36563" target="_blank" rel="noopener">
       <span class="pijl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       <div class="nr">2</div>
-      <div><h3>Tweede studiejaar</h3><p>Cursussen uit het tweede jaar.</p></div>
+      <div><h3>Pabo ALO</h3><p>Vakvisie en leerplanontwikkeling</p></div>
     </a>
-    <a class="tegel" style="--accent:var(--teal)" href="#">
+    <a class="tegel" style="--accent:var(--teal)" href="https://canvas.fontys.nl/courses/37555" target="_blank" rel="noopener">
       <span class="pijl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       <div class="nr">3</div>
-      <div><h3>Duale opleiding</h3><p>Werken en studeren combineren.</p></div>
+      <div><h3>ALO DUAAL</h3><p>OPI en SBB</p></div>
     </a>
-    <a class="tegel" style="--accent:var(--blauw)" href="https://canvas.fontys.nl/courses/36268/pages/beoordeling" target="_blank" rel="noopener" data-embed>
+    <a class="tegel" style="--accent:var(--blauw)" href="https://canvas.fontys.nl/courses/36268" target="_blank" rel="noopener">
       <span class="pijl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       <div class="nr">4</div>
-      <div><h3>ALO 4 Voltijd</h3><p>De Onderzoekende Leraar LO, toetspagina</p></div>
+      <div><h3>ALO 4 VOLTIJD</h3><p>De Onderzoekende leraar LO</p></div>
     </a>
   </nav>
 </main>
 
 <footer>
-  <span>Fontys Sport en Bewegen, Eindhoven</span>
+  <span></span>
   <span>Voorbeeldversie</span>
 </footer>
 
 
-<div class="viewer" id="viewer" role="dialog" aria-label="Toetspagina">
-  <div class="bar">
-    <button type="button" id="terug">&lsaquo; Terug naar overzicht</button>
-    <span class="titel">ALO 4 Voltijd &middot; De Onderzoekende Leraar LO</span>
-    <div class="acties"><a class="ext" id="extern" href="#" target="_blank" rel="noopener">Open in nieuw tabblad</a></div>
-  </div>
-  <div class="hint">Blijft het venster leeg of zie je een foutmelding, gebruik dan &ldquo;Open in nieuw tabblad&rdquo;. Inloggen met je Fontys-account kan nodig zijn.</div>
-  <iframe id="frame" title="Toetspagina Onderzoekende Leraar LO" referrerpolicy="no-referrer-when-downgrade"></iframe>
-</div>
 
-<script>
-  // Tijdelijk: knoppen doen nog niets. Vervang href="#" door de echte url.
-  document.querySelectorAll('.tegel[href="#"]').forEach(function(a){
-    a.addEventListener('click',function(e){e.preventDefault()});
-  });
-
-  var viewer=document.getElementById('viewer'),frame=document.getElementById('frame'),extern=document.getElementById('extern');
-  document.querySelectorAll('.tegel[data-embed]').forEach(function(a){
-    a.addEventListener('click',function(e){
-      if(e.ctrlKey||e.metaKey||e.shiftKey||e.button===1)return; // eigen keuze voor nieuw tabblad blijft werken
-      if(!window.matchMedia('(max-width:900px)').matches)return; // laptop en desktop: gewoon een nieuw tabblad
-      e.preventDefault();
-      extern.href=a.href; frame.src=a.href; viewer.classList.add('open'); document.body.style.overflow='hidden';
-      document.getElementById('terug').focus();
-    });
-  });
-  function sluit(){viewer.classList.remove('open');frame.src='about:blank';document.body.style.overflow=''}
-  document.getElementById('terug').addEventListener('click',sluit);
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&viewer.classList.contains('open'))sluit()});
-</script>
 </body>
 </html>
