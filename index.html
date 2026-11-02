@@ -14,7 +14,7 @@
     --tekst:#222;
     --grijs:#666;
     --lijn:#e6e1e6;
-    --raster:min(600px, calc(100vh - 228px), 46vw);
+    --t:min(300px, calc((100vh - 244px) / 2), calc((min(100vw, 1280px) - 96px - 64px - 380px - 32px) / 3));
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%}
@@ -37,20 +37,21 @@
   h1 .b{background:var(--magenta)}
   .tekst p{font-size:1.1rem;color:var(--grijs);max-width:26em;border-left:4px solid var(--magenta);padding-left:16px}
 
-  .raster{width:var(--raster);height:var(--raster);display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:16px}
-  .tegel{position:relative;display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;color:#fff;background:var(--accent);
+  .raster{width:calc(3 * var(--t) + 32px);display:grid;grid-template-columns:repeat(3,var(--t));grid-auto-rows:var(--t);gap:16px}
+  .tegel{position:relative;min-width:0;display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;color:#fff;background:var(--accent);
       padding:20px 22px;overflow:hidden;clip-path:polygon(0 0,calc(100% - 56px) 0,100% 56px,100% 100%,0 100%);
       transition:transform .18s ease,filter .18s ease}
   .tegel::after{content:"";position:absolute;right:-18%;bottom:-8%;width:78%;height:78%;opacity:.16;pointer-events:none;
       background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M18 4 L66 50 L18 96 L4 96 L52 50 L4 4 Z' fill='white'/%3E%3C/svg%3E") center/contain no-repeat;
       transition:transform .25s ease}
+  .tegel:not([href]){cursor:default}
   .tegel:hover,.tegel:focus-visible{transform:translateY(-3px);filter:brightness(1.06)}
   .tegel:hover::after{transform:translateX(-10px)}
   .tegel:focus-visible{outline:3px solid var(--donker);outline-offset:2px}
-  .nr{font-size:clamp(3rem,6vw,5rem);font-weight:800;line-height:1;position:relative;z-index:1}
+  .nr{font-size:clamp(2.6rem,4.4vw,4rem);font-weight:800;line-height:1;position:relative;z-index:1}
   .tegel > div:last-child{position:relative;z-index:1}
-  .tegel h3{font-size:clamp(.95rem,1.5vw,1.2rem);text-transform:uppercase;letter-spacing:.04em;font-weight:800;margin-bottom:6px}
-  .tegel p{font-size:.92rem;line-height:1.4;opacity:.95}
+  .tegel h3{font-size:clamp(.85rem,1.2vw,1.05rem);text-transform:uppercase;letter-spacing:.04em;font-weight:800;margin-bottom:6px}
+  .tegel p{font-size:.88rem;line-height:1.4;opacity:.95}
   .pijl{position:absolute;right:10px;top:10px;width:30px;height:30px;color:#fff;display:grid;place-items:center;z-index:1}
   .pijl svg{width:18px;height:18px}
 
@@ -58,8 +59,9 @@
 
 
   @media(max-width:900px){
-    :root{--raster:min(94vw,560px)}
+    :root{--t:calc((min(94vw,560px) - 16px) / 2)}
     header{padding:18px 20px}
+    .raster{width:min(94vw,560px);grid-template-columns:repeat(2,var(--t))}
     main{grid-template-columns:1fr;gap:28px;padding:24px 20px 40px;justify-items:center}
     .tekst{justify-self:start}
       .tegel{padding:14px 14px 14px 16px}
@@ -90,22 +92,32 @@
     <a class="tegel" style="--accent:var(--donker)" href="https://canvas.fontys.nl/courses/37416" target="_blank" rel="noopener">
       <span class="pijl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       <div class="nr">1</div>
-      <div><h3>ALO 1 VOLTIJD</h3><p>Samen Betrokken Bewegen</p></div>
+      <div><h3>ALO-1 (TGO)</h3><p>Samen Betrokken Bewegen</p></div>
+    </a>
+    <a class="tegel" style="--accent:var(--donker)">
+      <span class="pijl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <div class="nr">2</div>
+      <div><h3>ALO-2</h3><p>Oog voor elke leerling</p></div>
+    </a>
+    <a class="tegel" style="--accent:var(--teal)">
+      <span class="pijl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <div class="nr">2</div>
+      <div><h3>Duaal-2</h3><p>Bewegen met visie</p></div>
+    </a>
+    <a class="tegel" style="--accent:var(--donker)">
+      <span class="pijl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <div class="nr">3</div>
+      <div><h3>ALO-3</h3><p>Mijn onderwijsvisie</p></div>
     </a>
     <a class="tegel" style="--accent:var(--magenta)" href="https://canvas.fontys.nl/courses/36563" target="_blank" rel="noopener">
       <span class="pijl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      <div class="nr">2</div>
-      <div><h3>Pabo ALO</h3><p>Vakvisie en leerplanontwikkeling</p></div>
-    </a>
-    <a class="tegel" style="--accent:var(--teal)" href="https://canvas.fontys.nl/courses/37555" target="_blank" rel="noopener">
-      <span class="pijl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       <div class="nr">3</div>
-      <div><h3>ALO DUAAL</h3><p>OPI en SBB</p></div>
+      <div><h3>PaboALO-3 (1e gen. - TGO)</h3><p>Vakvisie en leerplanontwikkeling</p></div>
     </a>
-    <a class="tegel" style="--accent:var(--blauw)" href="https://canvas.fontys.nl/courses/36268" target="_blank" rel="noopener">
+    <a class="tegel" style="--accent:var(--donker)" href="https://canvas.fontys.nl/courses/36268" target="_blank" rel="noopener">
       <span class="pijl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       <div class="nr">4</div>
-      <div><h3>ALO 4 VOLTIJD</h3><p>De Onderzoekende leraar LO</p></div>
+      <div><h3>ALO-4</h3><p>Onderzoekende leraar LO</p></div>
     </a>
   </nav>
 </main>
